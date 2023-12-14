@@ -1,2 +1,3 @@
 # Playground
- Random stuff: code snippets and various projects.
+
+Random stuff: snippets, projects, ideas.
