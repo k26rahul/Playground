@@ -1,38 +1,51 @@
-import { state, makeMove, resetGame } from './ticTacToeGame.js';
+import { gameState, makeMove, resetGameState } from './ticTacToeGame.js';
 
-let playerXSymbol = 'X';
-let playerOSymbol = 'O';
+const playerXSymbol = 'X';
+const playerOSymbol = 'O';
 
 const statusElement = document.querySelector('.game__status');
 const cellElements = document.querySelectorAll('.grid__cell');
 
-cellElements.forEach((cellElement, index) => {
-  cellElement.addEventListener('click', () =>
-    handleCellClick(cellElement, index)
-  );
-});
+function resetGame() {
+  cellElements.forEach((cellElement, index) => {
+    cellElement.textContent = '';
+    cellElement.addEventListener('click', () => handleCellClick(index));
+  });
+
+  resetGameState();
+}
+
+resetGame();
 
 function getPlayerSymbol(player) {
   return player === 'X' ? playerXSymbol : playerOSymbol;
 }
 
-function handleCellClick(cellElement, index) {
-  cellElement.textContent = getPlayerSymbol(state.currentPlayer);
-  cellElement.classList.add(state.currentPlayer);
+function handleCellClick(index) {
+  const cellElement = cellElements[index];
+
+  cellElement.textContent = getPlayerSymbol(gameState.currentPlayer);
+  cellElement.classList.add(gameState.currentPlayer);
   makeMove(index);
-  updateUI();
+  updateStatus();
+
+  if (gameState.isGameOver) {
+    resetGame();
+  }
 }
 
-function updateUI() {
-  if (state.winner) {
-    statusElement.textContent = `Player ${getPlayerSymbol(state.winner)} wins!`;
-    return resetGame();
+function updateStatus() {
+  if (gameState.winner) {
+    statusElement.textContent = `Player ${getPlayerSymbol(
+      gameState.winner
+    )} wins!`;
+    return resetGameState();
   }
-  if (state.gameOver) {
+  if (gameState.isGameOver) {
     statusElement.textContent = "Game over. It's a draw!";
-    return resetGame();
+    return resetGameState();
   }
   statusElement.textContent = `Current move: Player ${getPlayerSymbol(
-    state.currentPlayer
+    gameState.currentPlayer
   )}`;
 }

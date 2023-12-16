@@ -10,8 +10,7 @@
 
 body {
   background-color: #607d8b;
-  /* font-family: 'Monoton', sans-serif; */
-  font-family: 'Syne Mono', monospace;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .game {
