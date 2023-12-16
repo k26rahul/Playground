@@ -4,6 +4,20 @@
 // It provides functions to make moves, check for a winner,
 // determine if the board is full, and reset the game.
 
+/**
+ * Represents the state of a Tic-Tac-Toe game.
+ * @typedef {Object} GameState
+ * @property {Array} board - The game board represented as an array with 9 cells, initialized to null.
+ * @property {string} currentPlayer - The symbol ('X' or 'O') of the current player.
+ * @property {string|null} winner - The symbol ('X' or 'O') of the winning player, or null if there is no winner.
+ * @property {Array<number>|null} winningLine - An array of indices on the board forming the winning line, or null if there is no winner.
+ * @property {boolean} isGameOver - Indicates whether the game is over (true) or still in progress (false).
+ */
+
+/**
+ * The state of a Tic-Tac-Toe game.
+ * @type {GameState}
+ */
 const gameState = {
   board: Array(9).fill(null),
   currentPlayer: 'X',
@@ -40,43 +54,48 @@ function makeMove(index) {
 }
 
 /**
- * Checks for a winner on the current game board.
- * @returns {boolean} - True if there is a winner, false otherwise.
+ * Winning lines on the Tic-Tac-Toe board.
+ * @type {Array<Array<number>>}
  */
-function checkForWinner() {
-  const winPatterns = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8], // Rows
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8], // Columns
-    [0, 4, 8],
-    [2, 4, 6], // Diagonals
-  ];
+const winningLines = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
 
-  for (const pattern of winPatterns) {
-    const [a, b, c] = pattern;
-    if (
-      gameState.board[a] &&
-      gameState.board[a] === gameState.board[b] &&
-      gameState.board[a] === gameState.board[c]
-    ) {
-      gameState.winner = gameState.currentPlayer;
-      gameState.winningLine = pattern;
-      return true;
+/**
+ * Checks for a winner on the given game board.
+ * @param {Array} board - The current state of the game board.
+ * @returns {Object|null} - An object containing the winner and winning line if there is a winner, or null otherwise.
+ */
+function checkWinner(board) {
+  for (const line of winningLines) {
+    const [a, b, c] = line;
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+      /**
+       * Object representing the winner and the winning line.
+       * @type {Object}
+       * @property {string} winner - The symbol ('X' or 'O') of the winning player.
+       * @property {Array<number>} winningLine - The indices on the board that form the winning line.
+       */
+      return { winner: board[a], winningLine: line };
     }
   }
-
-  return false;
+  return null;
 }
 
 /**
- * Checks if the game board is full.
+ * Checks if the given game board is full.
+ * @param {Array} board - The current state of the game board.
  * @returns {boolean} - True if the board is full, false otherwise.
  */
-function isBoardFull() {
-  return gameState.board.every(cell => cell !== null);
+function isBoardFull(board) {
+  return board.every(cell => cell !== null);
 }
 
 export { gameState, makeMove, resetGameState };
