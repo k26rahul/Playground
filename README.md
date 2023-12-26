@@ -6,7 +6,7 @@ Welcome to my coding playground! This repository contains ongoing work, snippets
 
 ## Usage
 
-- Explore random snippets and ongoing projects.
-- Feel free to use any useful findings in your own work.
+- Explore freely.
+- Utilize any useful findings in your projects.
 
 Happy coding! 🚀
