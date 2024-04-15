@@ -1,2 +1,1 @@
-# Playground
- 
+Playground: Random experimentation and idea testing.
