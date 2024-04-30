@@ -18,3 +18,11 @@ To play the game, simply run the respective Python script in your preferred envi
 - The computer randomly selects its choice for each round.
 - The outcome of each round is displayed, along with the current scores for the user, computer, and ties.
 - Scores are displayed before the start of the next round.
+
+### [Web Version](./RPS-Web/)
+- The web version of the game can be found in the `RPS-Web` directory.
+- It includes an HTML file (`index.html`), a JavaScript file (`script.js`), and a CSS file (`styles.css`) for styling.
+- To play the game, open the `index.html` file in your web browser.
+- Click on one of the emoji buttons (👊, 🖐️, ✌️) to make your choice.
+- The game will display the result of each round and keep track of scores, just like in the Python version.
+- The favicon for the web version is represented by an emoji, which is an SVG file (`favicon.svg`).
