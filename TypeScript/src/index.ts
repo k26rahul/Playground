@@ -1,3 +1,46 @@
+class Person {
+  constructor(public firstName: string, public lastName: string) {}
+  walk() {}
+}
+
+class Student extends Person {
+  constructor(public id: number, firstName: string, lastName: string) {
+    super(firstName, lastName);
+  }
+}
+
+let student = new Student(1, 'Rahul', 'Maurya');
+student.walk();
+
+/* class Account {
+  id: number;
+  owner: string;
+  balance: number;
+
+  constructor(id: number, owner: string, balance: number) {
+    this.id = id;
+    this.owner = owner;
+    this.balance = balance;
+  }
+
+  deposit(amount: number): void {
+    if (amount <= 0) throw new Error('invalid amount');
+    this.balance += amount;
+  }
+} */
+
+/* function processEvents(): never {
+  while (true) {}
+}
+
+processEvents();
+console.log('done'); // Unreachable code detected.ts(7027) */
+
+/* // type assertion
+// let phone = document.getElementById('phone') as HTMLInputElement;
+let phone = <HTMLInputElement>document.getElementById('phone');
+phone.value; */
+
 /* let quantity: 50 | 100 = 50;
 quantity = 100;
 console.log(quantity);
