@@ -25,4 +25,3 @@ To play the game, simply run the respective Python script in your preferred envi
 - To play the game, open the `index.html` file in your web browser.
 - Click on one of the emoji buttons (👊, 🖐️, ✌️) to make your choice.
 - The game will display the result of each round and keep track of scores, just like in the Python version.
-- The favicon for the web version is represented by an emoji, which is an SVG file (`favicon.svg`).
