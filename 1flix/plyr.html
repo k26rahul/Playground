@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Play HLS URL with Plyr</title>
+    <!-- Include Plyr CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/plyr@3.7.8/dist/plyr.css" />
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HTML element to display the video -->
+    <video id="player" controls>
+      <!-- Fallback for browsers that don't support the video element -->
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Include Plyr library -->
+    <script src="https://unpkg.com/plyr@3.7.8/dist/plyr.min.js"></script>
+
+    <script>
+      // Wait for the DOM to be ready
+      document.addEventListener('DOMContentLoaded', () => {
+        // Select the video element
+        const player = new Plyr('#player');
+
+        // Set the source of the video element to your HLS URL
+        player.source = {
+          type: 'video',
+          sources: [
+            {
+              src: 'https://s.pollllop.com/_v11/b79b38db69b34ffeecb2b007cc76d4fc980e861c82640a4217cffe143de54008643be5a5f7e0fff94ed0dd35a35b893682c9ff31328466e7256000aa80e40f88100e1dfcf77d0874a3c898cfc284986d1c467e6fa44536aea836c8c08aad392fa7b590b7e983bb11cdd37fca11bb86b0c124e1bc74d2032da7087f609ef9e23dfa0764860585e732ccbe7452e8ed7bf1/playlist.m3u8',
+              type: 'application/x-mpegURL',
+            },
+          ],
+        };
+      });
+    </script>
+  </body>
+</html>

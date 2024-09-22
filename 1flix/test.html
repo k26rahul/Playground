@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Embedded Video</title>
+  </head>
+  <body>
+    <iframe
+      src="https://megacloud.tv/embed-1/e-1/jAxplO72yU0V?z="
+      frameborder="0"
+      allowfullscreen
+      width="100%"
+      height="100%"
+    ></iframe>
+
+    <iframe
+      id="output-frame-id"
+      frameborder="0"
+      allowfullscreen
+      width="100%"
+      height="100%"
+    ></iframe>
+
+    <script>
+      var xhr = new XMLHttpRequest();
+
+      xhr.open(
+        'GET',
+        'https://cors-anywhere.herokuapp.com/https://megacloud.tv/embed-1/e-1/jAxplO72yU0V?z='
+      );
+      xhr.onreadystatechange = handler;
+      xhr.responseType = 'blob';
+      // xhr.setRequestHeader('Referer', 'https://1flix.to/');
+      // xhr.setRequestHeader('origin', 'https://1flix.to'); // Specify the origin header
+      // xhr.setRequestHeader('x-requested-with', 'XMLHttpRequest'); // Specify the x-requested-with header
+      xhr.send();
+
+      function handler() {
+        if (this.readyState === this.DONE) {
+          if (this.status === 200) {
+            // this.response is a Blob, because we set responseType above
+            var data_url = URL.createObjectURL(this.response);
+            document.querySelector('#output-frame-id').src = data_url;
+          } else {
+            console.error('Failed to load video.');
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
